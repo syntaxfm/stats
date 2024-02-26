@@ -1,0 +1,17 @@
+name = "podcast-stats"
+main = "src/index.ts"
+compatibility_date = "2023-12-18"
+compatibility_flags = ["nodejs_compat"]
+# Cron Triggers
+# Docs: https://developers.cloudflare.com/workers/platform/triggers/cron-triggers/
+# Configuration: https://developers.cloudflare.com/workers/wrangler/configuration/#triggers
+
+# [triggers]
+# crons = ["* * * * *"] # * * * * * = run every minute
+[dev]
+port = 8080
+
+[[d1_databases]]
+binding = "D1"
+database_name = "podcast-stats-prod"
+database_id = "e2659b9a-928c-4218-beb5-518b87f59c4f"
