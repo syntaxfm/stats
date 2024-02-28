@@ -79,11 +79,12 @@ async function getGroupedStandings() {
 				id: slug,
 				average,
 				data: items.map((item, index, arr) => {
+					const lastRank = arr[index - 1]?.rank;
 					return {
 						x: item.date,
 						y: item.rank,
 						index,
-						change: index > 0 ? item.rank - arr[index - 1].rank : null,
+						change: lastRank && item.rank ? item.rank - lastRank : null,
 						...item,
 					};
 				}),
