@@ -13,8 +13,9 @@ export function Leaderboard({ data }: { data: GroupedData }) {
 
 function LeaderBoardItem({ item }: { item: GroupedData[0] }) {
 	const show = getShowBySlug(item.id);
-	const rank = item.data.at(-1).rank;
-	const change = item.data.at(-1).change;
+	const rank = item.data.at(-1)?.rank;
+	const change = item.data.at(-1)?.change;
+	if (!show) return null;
 	return (
 		<div>
 			<img src={show.art} alt={show?.showName} className="max-w-full" />

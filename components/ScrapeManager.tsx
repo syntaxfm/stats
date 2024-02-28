@@ -29,7 +29,7 @@ export function ScrapeManager({ scrape }: { scrape: Scrape }) {
 	);
 }
 
-export function Submit({ children, ...props }: ServerProps<"button">) {
+export function Submit({ children, ...props }: { children: React.ReactNode; [key: string]: any }) {
 	const status = useFormStatus();
 	useEffect(() => {
 		if (status.data && status.pending) {

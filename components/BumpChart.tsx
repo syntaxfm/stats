@@ -78,8 +78,8 @@ export function BumpChart({ data }: { data: GroupedData }) {
 			pointBorderWidth={3}
 			activePointBorderWidth={3}
 			pointBorderColor={{ from: "serie.color" }}
-			endLabel={({ id }) => getShowBySlug(id)?.showName}
-			startLabel={({ id, data, average }) => {
+			endLabel={({ id }) => getShowBySlug(id)?.showName || ""}
+			startLabel={({ average }) => {
 				return `x̄${average}`;
 			}}
 			startLabelPadding={20}

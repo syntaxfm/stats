@@ -46,10 +46,10 @@ export async function getChartableChart() {
   const { document } = parseHTML(html);
   const rows = document.querySelectorAll('tr')
   console.log(`rows.length: ${rows.length}`);
-  const shows = (Array.from(rows) as HTMLElement[]).map((row, index) => ({
+  const shows = (Array.from(rows)).map((row, index) => ({
     rank: index + 1,
     showName: row.querySelector('a.link.blue')?.textContent,
-    change: formatChange(row.querySelector('.green, .red, .tracked')?.textContent),
+    change: formatChange(row.querySelector('.green, .red, .tracked')?.textContent || ''),
     slug: row.querySelector('a.link.blue')?.getAttribute('href')?.split('/').pop(),
   }))
   return shows;
@@ -90,18 +90,11 @@ async function populateShowPositions(shows: Show[] = []) {
       chartRankMove: show.chartRankMove,
     }
   }).filter(show => show.rank).sort((a, b) => {
-    if (!a.rank) return 1;
+    if (!a.rank || !b.rank) return 1;
     if (a.rank < b.rank) return -1;
     if (a.rank > b.rank) return 1;
     return 0;
   });
   // console.log(showPositions);
   return showPositions;
-}
-
-
-
-function formatChart(shows: ChartedShow[] = []) {
-  const skinny = shows.map(show => ({ showName: show.showName, rank: show.rank }));
-  console.table(skinny)
 }

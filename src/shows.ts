@@ -7,7 +7,16 @@ async function fetchArt(showUri: string) {
     .then(response => response.json()) as { thumbnail_url: string };
   return res.thumbnail_url;
 }
-export const showsToWatch = [
+
+export type ShowtoWatch = {
+  showUri: string;
+  showName: string;
+  color: string;
+  slug: string;
+  art: string;
+};
+
+export const showsToWatch: ShowtoWatch[] = [
   {
     showUri: 'spotify:show:4kYCRYJ3yK5DQbP5tbfZby',
     showName: 'Syntax',
@@ -121,15 +130,15 @@ export const showsToWatch = [
   // }
 ];
 
-async function go() {
-  const showsWithArt = [];
-  for (const show of showsToWatch) {
-    const art = await fetchArt(show.showUri);
-    show.art = art;
-  }
-  console.log('Done!');
-  console.log(showsWithArt);
-}
+// async function go() {
+//   const showsWithArt = [];
+//   for (const show of showsToWatch) {
+//     const art = await fetchArt(show.showUri);
+//     show.art = art;
+//   }
+//   console.log('Done!');
+//   console.log(showsWithArt);
+// }
 
 export const slugs = showsToWatch.flatMap(show => [show.slug, show.showUri]);
 

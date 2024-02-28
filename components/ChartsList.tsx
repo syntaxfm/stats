@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { format } from "date-fns";
 import Link from "next/link";
@@ -13,9 +12,6 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
-import ClientButon from "@/components/ui/ClientButton";
-import ClientButton from "@/components/ui/ClientButton";
-import { Submit } from "@/components/ui/Submit";
 import { ScrapeManager } from "./ScrapeManager";
 
 export async function ChartsList({ scrapes }: { scrapes: Scrape[] }) {
