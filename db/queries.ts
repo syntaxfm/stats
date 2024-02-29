@@ -13,6 +13,6 @@ export const getCachedScrapes = cache(
   ["scrapes"],
   {
     tags: ["scrapes"],
-    revalidate: 20,
+    revalidate: 1,
   },
 );
