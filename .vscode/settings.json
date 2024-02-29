@@ -1,9 +1,8 @@
 {
 	"editor.defaultFormatter": "biomejs.biome",
 	"editor.codeActionsOnSave": {
-		"quickfix.biome": "explicit",
-		"source.organizeImports.biome": "explicit"
-	},
+    "source.fixAll.eslint": "never"
+  },
 	"editor.formatOnSave": true,
 	"[javascript]": {
 		"editor.formatOnSave": true,
@@ -20,5 +19,8 @@
 		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"eslint.codeActionsOnSave.rules": null
+	"eslint.codeActionsOnSave.rules": null,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false
+  },
 }
