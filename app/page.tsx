@@ -3,7 +3,7 @@ import { ChartedRankings } from "@/components/ChartRankings";
 import { ChartsList } from "@/components/ChartsList";
 import { Leaderboard } from "@/components/LeaderBoard";
 import { db } from "@/db/db";
-import { getCachedScrapes, getScrapes } from "@/db/queries";
+import { getCachedScrapes } from "@/db/queries";
 import { scrapeItem } from "@/src/schema";
 import { showsToWatch, slugs } from "@/src/shows";
 import { format } from "date-fns";
@@ -95,7 +95,7 @@ async function getGroupedStandings() {
 }
 
 export default async function Home() {
-	const scrapes = await getScrapes();
+	const scrapes = await getCachedScrapes();
 	const grouped = await getGroupedStandings();
 	return (
 		<main>
