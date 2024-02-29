@@ -2,17 +2,18 @@ export default {
   async scheduled(event, env, ctx) {
     // Write code for updating your API
     switch (event.cron) {
-      case "* * * * *":
-        console.log(`Once a min: ${event.cron}`);
-        break;
-      case "*/3 * * * *": {
-        console.log(`Three times a min: ${event.cron}`);
-        const result = await fetch("https://stats.syntax.fm/api/scrape/spotify", {
-          headers: {
-            "X-CRON-KEY": env.CRON_KEY
-          }
-        });
-        console.log(await result.json());
+      // case "* * * * *":
+      //   console.log(`Once a min: ${event.cron}`);
+      //   break;
+      case "0 12 * * *": {
+        const headers: HeadersInit = {
+          "X-CRON-KEY": env.CRON_KEY
+        };
+        const result = await Promise.all([
+          fetch("https://stats.syntax.fm/api/scrape/spotify", { headers }).then(res => res.json()),
+          fetch("https://stats.syntax.fm/api/scrape/apple", { headers }).then(res => res.json())
+        ]);
+        console.log(result);
         break;
       }
     }
@@ -24,4 +25,3 @@ export default {
 } satisfies ExportedHandler<{
   CRON_KEY: string;
 }>;
-

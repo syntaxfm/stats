@@ -13,3 +13,5 @@ port = 8080
 binding = "D1"
 database_name = "podcast-stats-prod"
 database_id = "e2659b9a-928c-4218-beb5-518b87f59c4f"
+
+[vars]
