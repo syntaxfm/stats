@@ -3,18 +3,23 @@ export default {
     // Write code for updating your API
     switch (event.cron) {
       case "* * * * *":
-        // Every one minutes
-        console.log(`CRon: ${event.cron}`);
+        console.log(`Once a min: ${event.cron}`);
         break;
-      case "*/3 * * * *":
-        // Every ten minutes
-        console.log(`Running cron job with cron: ${event.cron}`);
-        // await updateAPI2();
+      case "*/3 * * * *": {
+        console.log(`Three times a min: ${event.cron}`);
+        const result = await fetch("https://stats.syntax.fm/api/scrape/spotify", {
+          headers: {
+            "X-CRON-KEY": process.env.CRON_KEY
+          }
+        });
+        console.log(await result.json());
         break;
+      }
     }
     console.log("cron processed");
   },
-  fetch: async (event, env, ctx) => {
+  async fetch(event, env, ctx) {
     return new Response("We dont need a fetch handler for cron jobs. But Hi!");
   }
 } satisfies ExportedHandler;
+

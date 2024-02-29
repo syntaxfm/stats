@@ -2,6 +2,7 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       D1: D1Database
+      CRON_KEY: string
     }
   }
 }

@@ -10,6 +10,7 @@
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:preview": "npm run pages:build && wrangler pages dev .vercel/output/static --compatibility-date=2024-01-17 --compatibility-flag=nodejs_compat",
     "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
+    "worker:deploy": "wrangler deploy",
     "drizzle:generate": "drizzle-kit generate:sqlite",
     "drizzle:up": "drizzle-kit up:sqlite",
     "drizzle:studio": "drizzle-kit studio",
