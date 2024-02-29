@@ -1,13 +1,11 @@
 name = "podcast-stats"
-main = "src/index.ts"
+main = "src/cron.ts"
 compatibility_date = "2023-12-18"
 compatibility_flags = ["nodejs_compat"]
-# Cron Triggers
-# Docs: https://developers.cloudflare.com/workers/platform/triggers/cron-triggers/
-# Configuration: https://developers.cloudflare.com/workers/wrangler/configuration/#triggers
 
-# [triggers]
-# crons = ["* * * * *"] # * * * * * = run every minute
+[triggers]
+crons = ["* * * * *", "*/3 * * * *"]
+
 [dev]
 port = 8080
 
