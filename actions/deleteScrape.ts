@@ -5,10 +5,6 @@ import { db } from '../db/db';
 import { scrapes } from '../src/schema';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
-function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 export type ServerActionSuccess = {
   success: true;
   message: string;
@@ -29,7 +25,6 @@ export async function deleteScrape(state: unknown, formData: FormData): Promise<
       errors: 'No id provided',
     };
   }
-  await wait(1000);
   const [deletedScrape] = await db.delete(scrapes).where(eq(scrapes.id, id)).returning();
   console.log(`Deleting scrape with id: `, formData.get("id"));
   revalidateTag('scrapes');
