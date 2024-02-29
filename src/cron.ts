@@ -9,7 +9,7 @@ export default {
         console.log(`Three times a min: ${event.cron}`);
         const result = await fetch("https://stats.syntax.fm/api/scrape/spotify", {
           headers: {
-            "X-CRON-KEY": process.env.CRON_KEY
+            "X-CRON-KEY": env.CRON_KEY
           }
         });
         console.log(await result.json());
@@ -21,5 +21,7 @@ export default {
   async fetch(event, env, ctx) {
     return new Response("We dont need a fetch handler for cron jobs. But Hi!");
   }
-} satisfies ExportedHandler;
+} satisfies ExportedHandler<{
+  CRON_KEY: string;
+}>;
 
