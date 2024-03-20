@@ -42,7 +42,7 @@ export async function GET(req: NextRequest, res: NextResponse<ResponseData>) {
   }
   // JSON
   return Response.json({
-    message: `Scraped ${spotifyChart.length} shows from Spotify`,
+    message: `Scraped ${spotifyChart.length} shows from Spotify!`,
     data: myScrape
   });
 }
